@@ -43,5 +43,7 @@ jobs:
       run: yarn install
     - name: Build application
       run: yarn run build
+      env:
+        ENV: ${{ vars.ENV }}
     - name: Deploy to S3
       run: aws s3 sync ./dist/ s3://${{ secrets.S3_BUCKET_NAME }}
